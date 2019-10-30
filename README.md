@@ -1,3 +1,6 @@
+# Updates on this fork
+The original repository was last edited over 2 years ago, and many libraries have become out of date. This repo serves to make the code base compatible with Google Colab.
+
 # Overview
 This repository provides source code and pre-trained models for brain tumor segmentation with BraTS dataset. The method is detailed in [1], and it won the 2nd place of MICCAI 2017 BraTS Challenge. In addition, it is adapted to deal with BraTS 2015 dataset.
 
