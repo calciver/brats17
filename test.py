@@ -62,7 +62,7 @@ def test(config_file):
         class_num1ax   = config_net1ax['class_num']
         
         full_data_shape1ax = [batch_size] + data_shape1ax
-        x1ax = tf.placeholder(tf.float32, shape = full_data_shape1ax)          
+        x1ax = tf.compat.v1.placeholder(tf.float32, shape = full_data_shape1ax)          
         net_class1ax = NetFactory.create(net_type1ax)
         net1ax = net_class1ax(num_classes = class_num1ax,w_regularizer = None,
                     b_regularizer = None, name = net_name1ax)
