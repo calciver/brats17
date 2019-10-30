@@ -78,7 +78,7 @@ def test(config_file):
         class_num1sg   = config_net1sg['class_num']
 
         full_data_shape1sg = [batch_size] + data_shape1sg
-        x1sg = tf.placeholder(tf.float32, shape = full_data_shape1sg)          
+        x1sg = tf.compat.v1.placeholder(tf.float32, shape = full_data_shape1sg)          
         net_class1sg = NetFactory.create(net_type1sg)
         net1sg = net_class1sg(num_classes = class_num1sg,w_regularizer = None,
                     b_regularizer = None, name = net_name1sg)
