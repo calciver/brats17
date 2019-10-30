@@ -15,7 +15,7 @@ import time
 import os
 import sys
 import tensorflow as tf
-from tensorflow.contrib.data import Iterator
+Iterator = tf.compat.v1.data.Iterator
 from util.data_loader import *
 from util.data_process import *
 from util.train_test_func import *
@@ -94,7 +94,7 @@ def test(config_file):
         class_num1cr   = config_net1cr['class_num']
 
         full_data_shape1cr = [batch_size] + data_shape1cr
-        x1cr = tf.placeholder(tf.float32, shape = full_data_shape1cr)          
+        x1cr = tf.compat.v1.placeholder(tf.float32, shape = full_data_shape1cr)          
         net_class1cr = NetFactory.create(net_type1cr)
         net1cr = net_class1cr(num_classes = class_num1cr,w_regularizer = None,
                     b_regularizer = None, name = net_name1cr)
@@ -245,8 +245,8 @@ def test(config_file):
             proby3cr = tf.nn.softmax(predicty3cr)
 
     # 3, create session and load trained models
-    all_vars = tf.global_variables()
-    sess = tf.InteractiveSession()   
+    all_vars = tf.compat.v1.global_variables()
+    sess = tf.compat.v1.InteractiveSession()   
     sess.run(tf.global_variables_initializer())  
     if(config_net1):
         net1_vars = [x for x in all_vars if x.name[0:len(net_name1) + 1]==net_name1 + '/']
@@ -254,7 +254,7 @@ def test(config_file):
         saver1.restore(sess, config_net1['model_file'])
     else:
         net1ax_vars = [x for x in all_vars if x.name[0:len(net_name1ax) + 1]==net_name1ax + '/']
-        saver1ax = tf.train.Saver(net1ax_vars)
+        saver1ax = tf.compat.v1.train.Saver(net1ax_vars)
         saver1ax.restore(sess, config_net1ax['model_file'])
         net1sg_vars = [x for x in all_vars if x.name[0:len(net_name1sg) + 1]==net_name1sg + '/']
         saver1sg = tf.train.Saver(net1sg_vars)

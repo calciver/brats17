@@ -1,5 +1,5 @@
 [data]
-data_root         = /home/guotwang/data/Brats17TrainingData
+data_root         = /content/brats17/data/Brats17TrainingData
 save_folder       = result17
 data_names        = config17/test_names_temp.txt
 modality_postfix  = [flair, t1, t1ce, t2]
@@ -89,3 +89,4 @@ model_file          = model17/msnet_en32cr_20000.ckpt
 
 [testing]
 test_slice_direction = all
+
