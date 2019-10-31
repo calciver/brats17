@@ -134,7 +134,7 @@ def test(config_file):
             class_num2ax   = config_net2ax['class_num']
             
             full_data_shape2ax = [batch_size] + data_shape2ax
-            x2ax = tf.placeholder(tf.float32, shape = full_data_shape2ax)          
+            x2ax = tf.compat.v1.placeholder(tf.float32, shape = full_data_shape2ax)          
             net_class2ax = NetFactory.create(net_type2ax)
             net2ax = net_class2ax(num_classes = class_num2ax,w_regularizer = None,
                         b_regularizer = None, name = net_name2ax)
@@ -260,7 +260,7 @@ def test(config_file):
         saver1sg = tf.compat.v1.train.Saver(net1sg_vars)
         saver1sg.restore(sess, config_net1sg['model_file'])     
         net1cr_vars = [x for x in all_vars if x.name[0:len(net_name1cr) + 1]==net_name1cr + '/']
-        saver1cr = tf.train.Saver(net1cr_vars)
+        saver1cr = tf.compat.v1.train.Saver(net1cr_vars)
         saver1cr.restore(sess, config_net1cr['model_file'])
 
     if(config_test.get('whole_tumor_only', False) is False):
