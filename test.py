@@ -247,7 +247,7 @@ def test(config_file):
     # 3, create session and load trained models
     all_vars = tf.compat.v1.global_variables()
     sess = tf.compat.v1.InteractiveSession()   
-    sess.run(tf.global_variables_initializer())  
+    sess.run(tf.compat.v1.global_variables_initializer())  
     if(config_net1):
         net1_vars = [x for x in all_vars if x.name[0:len(net_name1) + 1]==net_name1 + '/']
         saver1 = tf.train.Saver(net1_vars)
@@ -257,7 +257,7 @@ def test(config_file):
         saver1ax = tf.compat.v1.train.Saver(net1ax_vars)
         saver1ax.restore(sess, config_net1ax['model_file'])
         net1sg_vars = [x for x in all_vars if x.name[0:len(net_name1sg) + 1]==net_name1sg + '/']
-        saver1sg = tf.train.Saver(net1sg_vars)
+        saver1sg = tf.compat.v1.train.Saver(net1sg_vars)
         saver1sg.restore(sess, config_net1sg['model_file'])     
         net1cr_vars = [x for x in all_vars if x.name[0:len(net_name1cr) + 1]==net_name1cr + '/']
         saver1cr = tf.train.Saver(net1cr_vars)
